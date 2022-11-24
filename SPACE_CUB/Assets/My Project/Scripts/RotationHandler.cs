@@ -10,6 +10,8 @@ public class RotationHandler : MonoBehaviour
     bool allowRotation;
     bool stop;
 
+    IEnumerator myRotationCoroutine;
+
     Quaternion TargetRot;
 
     private IEnumerator coroutine;
@@ -21,10 +23,16 @@ public class RotationHandler : MonoBehaviour
     }
     public void AllowRotation()
     {
-        StartCoroutine("IncreaseSpeed");
+        myRotationCoroutine = IncreaseSpeed();
+        StartCoroutine(myRotationCoroutine);
+
         allowRotation = true;
         if(SpriteChangingCube.GetComponent<SpriteChanging>())
             SpriteChangingCube.GetComponent<SpriteChanging>().StartCoroutines();
+    }
+    public void StopRotation()
+    {
+        StopCoroutine(myRotationCoroutine);
     }
     IEnumerator IncreaseSpeed()
     {
