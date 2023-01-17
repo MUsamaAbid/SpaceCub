@@ -15,5 +15,9 @@ public class LevelHandler : MonoBehaviour
         PlayerPrefs.SetInt(PrefsHandler.currentLevel, Level);
         PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, Galaxy);
         PlayerPrefs.SetInt(PrefsHandler.minClick, MinClicks);
+
+        Debug.Log("Level: " + Level + "- Galaxy: " + Galaxy);
+
+        PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, Level + 1);
     }
 }

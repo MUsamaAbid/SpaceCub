@@ -33,6 +33,7 @@ public class RotationHandler : MonoBehaviour
     public void StopRotation()
     {
         StopCoroutine(myRotationCoroutine);
+        Invoke("StopRotationLocally", 15f);
     }
     IEnumerator IncreaseSpeed()
     {
@@ -64,6 +65,10 @@ public class RotationHandler : MonoBehaviour
                 //gameObject.SetActive(false);
             }
         }
+    }
+    void StopRotationLocally()
+    {
+        StopRotation(Quaternion.identity);
     }
     public void StopRotation(Quaternion TargetRot)
     {

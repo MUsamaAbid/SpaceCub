@@ -31,7 +31,9 @@ public class MMLevelEnabler : MonoBehaviour
     }
     IEnumerator OpenMap()
     {
-        for (int i = 0; i <= Levels.Length - 1; i++)
+        int openLevel = PlayerPrefs.GetInt(PrefsHandler.UnlockedGalaxy);
+        //for (int i = 0; i <= Levels.Length - 1; i++)
+        for (int i = 0; i <= openLevel - 1; i++)
         {
             Levels[i].GetComponent<EnableLevel>().EnableCurrentLevel();
             yield return new WaitForSeconds(0.6f);
