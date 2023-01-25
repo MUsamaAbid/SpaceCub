@@ -41,23 +41,31 @@ public class NextLevelSequence : MonoBehaviour
             }
 
             Invoke("DisablePerfectCube", 4f);
+            Debug.Log("Next leve cube setup Galaxy 1");
         }
-        else if(PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 1)
+
+        else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 1)
         {
             Debug.Log("3x3 galaxy");
             Grey3x3Sprite.SetActive(true);
             Grey3x3Sprite.GetComponent<Animator>().SetTrigger("Rescale");
 
             Invoke("EnableNext3x3Level", 0.6f);
+            Debug.Log("Next leve cube setup Galaxy 2");
         }
-        else if(PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 2)
+
+        else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 2)
         {
             Debug.Log("4x4 galaxy");
             Grey4x4Sprite.SetActive(true);
             Grey4x4Sprite.GetComponent<Animator>().SetTrigger("Rescale");
 
             Invoke("EnableNext4x4Level", 0.6f);
+            Debug.Log("Next leve cube setup Galaxy 3");
         }
+
+        if (FindObjectOfType<GamePlayUI>()) Debug.Log("Found Rotation GamePlayUI");
+        FindObjectOfType<GamePlayUI>().ResetLevelChangeUI();
     }
     void EnableNext3x3Level()
     {

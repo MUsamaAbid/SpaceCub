@@ -51,6 +51,8 @@ public class GamePlayUI : MonoBehaviour
     [SerializeField] GameObject Grey4x4Perfect;
 
     [Header("Stars")]
+    [SerializeField] GameObject StarParentRotation;
+
     [SerializeField] GameObject Star1Filled;
 
     [SerializeField] GameObject Star2Unfilled;
@@ -69,6 +71,12 @@ public class GamePlayUI : MonoBehaviour
 
     [Header("Main Menu")]
     [SerializeField] GameObject MainMenu;
+
+    [Header("Buttons")]
+    [SerializeField] GameObject NextLevelBtn;
+
+    [Header("SpriteChanger")]
+    [SerializeField] GameObject BackgroundHyperloop;
 
     TimeSpan timePlaying;
     bool timerGoing;
@@ -379,6 +387,48 @@ public class GamePlayUI : MonoBehaviour
 
         LoadingFiller.SetActive(false);
         LoadingFiller.GetComponent<Animator>().SetTrigger("Reset");
+    }
+    #endregion
+
+    #region Reset after level change
+    public void ResetLevelChangeUI()
+    {
+        ResetStarsRotation();
+        ResetBackgroundHyperloop();
+
+        EnableBackBtnInGameplay();
+        EnableSettingsBtnInGameplay();
+        EnableRestartBtnInGameplay();
+        EnableLevelTextInGameplay();
+        ResetPerfectCube();
+    }
+    void ResetBackgroundHyperloop()
+    {
+        BackgroundHyperloop.GetComponent<SpriteChanging>().ResetToTheFirstSprite();
+    }
+    void ResetPerfectCube()
+    {
+        BackgroundHyperloop.GetComponent<SpriteChanging>().ResetToFirstSpriteRotation();
+    }
+    void ResetStarsRotation()
+    {
+        StarParentRotation.GetComponent<RotationHandler>().StopRotationInstantly();
+    }
+    void EnableBackBtnInGameplay()
+    {
+        BackButton.gameObject.SetActive(true);
+    }
+    void EnableSettingsBtnInGameplay()
+    {
+        SettingButton.gameObject.SetActive(true);
+    }
+    void EnableRestartBtnInGameplay()
+    {
+        Restart.gameObject.SetActive(true);
+    }
+    void EnableLevelTextInGameplay()
+    {
+        LevelText.gameObject.SetActive(true);
     }
     #endregion
 }
