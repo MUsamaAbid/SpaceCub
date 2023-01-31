@@ -131,7 +131,7 @@ public class SpriteChanging : MonoBehaviour
         TargetSprite.GetComponent<Image>().sprite = RGBSprite;
         Debug.Log("Changed to RGB sprite");
     }
-    public void ResetToTheFirstSprite()
+    public void ResetTheCubeToTheFirstSprite()
     {
         TargetSprite.GetComponent<Image>().sprite = Sprites[0];
         //TargetSprite.GetComponent<Image>().SetNativeSize();

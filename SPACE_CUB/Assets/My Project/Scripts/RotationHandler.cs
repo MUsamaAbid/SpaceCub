@@ -16,10 +16,13 @@ public class RotationHandler : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    float initialSpeed;
+
     void Start()
     {
         allowRotation = false;
         stop = false;
+        initialSpeed = speed;
     }
     public void AllowRotation()
     {
@@ -73,6 +76,7 @@ public class RotationHandler : MonoBehaviour
                 allowRotation = false;
                 stop = false;
                 transform.rotation = TargetRot;
+                ResetSpeed();
                 //FindObjectOfType<NextLevelSequence>().NextLevelCubesSetup();
                 //gameObject.SetActive(false);
             }
@@ -89,5 +93,13 @@ public class RotationHandler : MonoBehaviour
         allowRotation = false;
         Debug.Log("Allow Rotation: " + allowRotation);
         Debug.Log("Target Rotation - Rotation Stopped " + TargetRot + "- GameObject: " + gameObject.name);
+    }
+    public void ResetSpeed()
+    {
+        speed = initialSpeed;
+    }
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.identity;
     }
 }

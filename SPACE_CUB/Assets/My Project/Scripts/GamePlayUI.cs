@@ -41,8 +41,10 @@ public class GamePlayUI : MonoBehaviour
 
     [SerializeField] GameObject CongratulationsScreen;
 
+    [Header("VFX")]
     [SerializeField] GameObject Confetti;
 
+    [Header("Ending cubes")]
     [SerializeField] GameObject TwoByTwoRGBCube;
 
     [SerializeField] GameObject FinalCube;
@@ -404,15 +406,16 @@ public class GamePlayUI : MonoBehaviour
     }
     void ResetBackgroundHyperloop()
     {
-        BackgroundHyperloop.GetComponent<SpriteChanging>().ResetToTheFirstSprite();
+        BackgroundHyperloop.GetComponent<SpriteChanging>().ResetTheCubeToTheFirstSprite();
     }
     void ResetPerfectCube()
     {
-        BackgroundHyperloop.GetComponent<SpriteChanging>().ResetToFirstSpriteRotation();
+        FinalCube.GetComponent<SpriteChanging>().ResetToFirstSpriteRotation();
     }
     void ResetStarsRotation()
     {
         StarParentRotation.GetComponent<RotationHandler>().StopRotationInstantly();
+        StarParentRotation.GetComponent<RotationHandler>().ResetRotation();
     }
     void EnableBackBtnInGameplay()
     {
