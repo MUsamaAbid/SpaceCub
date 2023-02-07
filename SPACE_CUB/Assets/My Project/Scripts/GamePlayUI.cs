@@ -88,6 +88,8 @@ public class GamePlayUI : MonoBehaviour
 
     int clicks;
 
+    Coroutine TimerCoroutine;
+
     #region public functions
 
     #region UpdateFields
@@ -108,7 +110,7 @@ public class GamePlayUI : MonoBehaviour
     private void Start()
     {
         //elapsedTime = 0f;
-        Invoke("StartTimer", 4f);
+        //Invoke("StartTimer", 4f);
     }
     public void StartWinScreen()
     {
@@ -344,13 +346,18 @@ public class GamePlayUI : MonoBehaviour
     }
     public void StartTimer()
     {
+        if (timerGoing) return;
+
+        Debug.Log("Timer start");
+        elapsedTime = 0f;
         timerGoing = true;
         TimeText.gameObject.transform.localPosition = new Vector3(-180, -636, 0);
         TimeText.gameObject.SetActive(true);
-        StartCoroutine(UpdateTimer());
+        TimerCoroutine = StartCoroutine(UpdateTimer());
     }
     public void StopTimer()
     {
+        StopCoroutine(TimerCoroutine);
         timerGoing = false;
         TimeText.gameObject.transform.localPosition = new Vector3(-180, -432, 0);
         FindObjectOfType<ScoreHandler>().SetTime(int.Parse(MinsText.text), int.Parse(SecondsText.text), int.Parse(MilliText.text));
@@ -432,6 +439,10 @@ public class GamePlayUI : MonoBehaviour
     void EnableLevelTextInGameplay()
     {
         LevelText.gameObject.SetActive(true);
+    }
+    void EnableTimer()
+    {
+
     }
     #endregion
 }

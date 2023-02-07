@@ -79,6 +79,7 @@ public class MovementHandler : MonoBehaviour
         {
             Cubes[i].StartMovement(MovementDegree.GamePlay);
         }
+        FindObjectOfType<GamePlayUI>().StartTimer();
     }
     public void Spreaded()
     {
