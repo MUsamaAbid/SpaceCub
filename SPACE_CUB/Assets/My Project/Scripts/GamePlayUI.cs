@@ -223,6 +223,10 @@ public class GamePlayUI : MonoBehaviour
     {
         TimeText.gameObject.SetActive(true);
     }
+    public void DisplayLevelText()
+    {
+        LevelText.gameObject.SetActive(true);
+    }
     void EnableAllButtons()
     {
         NextLevel.gameObject.SetActive(true);
@@ -414,6 +418,8 @@ public class GamePlayUI : MonoBehaviour
         EnableLevelTextInGameplay();
         ResetPerfectCube();
         ResetClicksAndScore();
+        DisableFinalStar();
+        DisableLevelText();
     }
     void ResetBackgroundHyperloop()
     {
@@ -447,6 +453,14 @@ public class GamePlayUI : MonoBehaviour
     void ResetClicksAndScore()
     {
         counter.ResetClicksAndScore();
+    }
+    void DisableFinalStar()
+    {
+        FinalStar.gameObject.SetActive(false);
+    }
+    void DisableLevelText()
+    {
+        LevelText.gameObject.SetActive(false);
     }
     #endregion
 }
