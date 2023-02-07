@@ -64,7 +64,7 @@ public class NextLevelSequence : MonoBehaviour
             Debug.Log("Next leve cube setup Galaxy 3");
         }
 
-        if (FindObjectOfType<GamePlayUI>()) Debug.Log("Found Rotation GamePlayUI");
+        if (FindObjectOfType<GamePlayUI>()) Debug.LogError("Found Rotation GamePlayUI");
         FindObjectOfType<GamePlayUI>().ResetLevelChangeUI();
     }
     void EnableNext3x3Level()

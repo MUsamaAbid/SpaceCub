@@ -29,4 +29,9 @@ public class Counter : MonoBehaviour
         clicks++;
         gamePlayUI.UpdateClicks(clicks.ToString());
     }
+    public void ResetClicksAndScore()
+    {
+        clicks = 0; 
+        score = 0;
+    }
 }

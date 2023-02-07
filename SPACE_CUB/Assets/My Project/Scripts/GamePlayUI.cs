@@ -80,6 +80,9 @@ public class GamePlayUI : MonoBehaviour
     [Header("SpriteChanger")]
     [SerializeField] GameObject BackgroundHyperloop;
 
+    [Header("Script Ref")]
+    [SerializeField] Counter counter;
+
     TimeSpan timePlaying;
     bool timerGoing;
     float elapsedTime;
@@ -410,6 +413,7 @@ public class GamePlayUI : MonoBehaviour
         EnableRestartBtnInGameplay();
         EnableLevelTextInGameplay();
         ResetPerfectCube();
+        ResetClicksAndScore();
     }
     void ResetBackgroundHyperloop()
     {
@@ -440,9 +444,9 @@ public class GamePlayUI : MonoBehaviour
     {
         LevelText.gameObject.SetActive(true);
     }
-    void EnableTimer()
+    void ResetClicksAndScore()
     {
-
+        counter.ResetClicksAndScore();
     }
     #endregion
 }
