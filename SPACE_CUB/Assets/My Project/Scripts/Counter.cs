@@ -27,6 +27,7 @@ public class Counter : MonoBehaviour
     public void ClickCounter()
     {
         clicks++;
+        if(!gamePlayUI) gamePlayUI = FindObjectOfType <GamePlayUI>();
         gamePlayUI.UpdateClicks(clicks.ToString());
     }
     public void ResetClicksAndScore()
