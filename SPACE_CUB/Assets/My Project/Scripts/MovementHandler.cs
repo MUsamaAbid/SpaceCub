@@ -75,6 +75,7 @@ public class MovementHandler : MonoBehaviour
     }
     public void GamePlayForm()
     {
+        Debug.Log("Spread - GamePlay: " + gameObject.transform.parent.name);
         for (int i = 0; i < Cubes.Length; i++)
         {
             Cubes[i].StartMovement(MovementDegree.GamePlay);
@@ -84,6 +85,8 @@ public class MovementHandler : MonoBehaviour
     }
     public void Spreaded()
     {
+        Debug.Log("Spread - Spreaded: " + gameObject.transform.parent.name);
+
         for (int i = 0; i < Cubes.Length; i++)
         {
             Cubes[i].StartMovement(MovementDegree.Spreaded);
@@ -91,6 +94,8 @@ public class MovementHandler : MonoBehaviour
     }
     public void Centre()
     {
+        Debug.Log("Spread - Centre: " + gameObject.transform.parent.name);
+
         for (int i = 0; i < Cubes.Length; i++)
         {
             Cubes[i].StartMovement(MovementDegree.Centre);

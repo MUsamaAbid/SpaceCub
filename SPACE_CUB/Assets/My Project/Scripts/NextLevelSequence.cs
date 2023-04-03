@@ -107,6 +107,19 @@ public class NextLevelSequence : MonoBehaviour
     }
     void DisablePerfectCube() 
     {
+        //if (GetComponentInChildren<MovementHandler>())
+        //{
+        //    Debug.Log("Spread - Found");
+        //    GetComponentInChildren<MovementHandler>().Centre();
+        //    if (PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>())
+        //    {
+        //        Debug.Log("Spread - Found");
+        //    }
+        //}
+        Debug.Log("Spread - " + PerfectCube.transform.GetChild(0).gameObject.name);
+
+        //GetComponent<MovementHandler>().Centre();
+        PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>().Centre();
         PerfectCube.SetActive(false);
     } 
     void Disable3x3Cube()
