@@ -73,13 +73,13 @@ public class MainMenuManager : MonoBehaviour
     private void GoToLevel()
     {
         int level = currentLevel;
-        
+
         LevelsScreen.SetActive(true);
         int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
         FindObjectOfType<Levels>().StartLevel(galaxy, level);
-        
+
         MainMenu.SetActive(false);
-        
+
         DisableGalaxy();
         DisableLoadingScreen();
         gameObject.SetActive(false);
