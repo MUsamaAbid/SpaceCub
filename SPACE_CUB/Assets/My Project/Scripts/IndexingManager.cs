@@ -23,11 +23,11 @@ public class IndexingManager : MonoBehaviour
         SortPriorities();
         SetPressedColors();
     }
+
     void InitializeProperties()
     {
         priorities = new List<int>();
     }
-
     private void SortPriorities()
     {
         cubes = GetComponentsInChildren<PriorityManager>();
