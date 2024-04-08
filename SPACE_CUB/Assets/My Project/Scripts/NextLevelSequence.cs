@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NextLevelSequence : MonoBehaviour
 {
@@ -107,21 +108,25 @@ public class NextLevelSequence : MonoBehaviour
     }
     void DisablePerfectCube() 
     {
-        //if (GetComponentInChildren<MovementHandler>())
-        //{
-        //    Debug.Log("Spread - Found");
-        //    GetComponentInChildren<MovementHandler>().Centre();
-        //    if (PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>())
-        //    {
-        //        Debug.Log("Spread - Found");
-        //    }
-        //}
         Debug.Log("Spread - " + PerfectCube.transform.GetChild(0).gameObject.name);
-
         //GetComponent<MovementHandler>().Centre();
         PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>().Centre();
+        //Set all perfect cube children images to disable
+        //& thn turn them back on
+        //& thn disable the perfect cube after like one second
+        //so all the images are gone to centre
+        DisableImagesRecursively(PerfectCube.transform, false);
+        Debug.Log("Testing: PerfectCube Name: " + PerfectCube.transform.name);
+        Invoke("ResetPerfectCube", 0.5f);
+        //PerfectCube.SetActive(false);
+    }
+
+    void ResetPerfectCube()
+    {
+        DisableImagesRecursively(PerfectCube.transform, true);
         PerfectCube.SetActive(false);
-    } 
+    }
+
     void Disable3x3Cube()
     {
         Grey3x3Cube.SetActive(false);
@@ -147,6 +152,23 @@ public class NextLevelSequence : MonoBehaviour
         for (int i = 0; i < Levels.Length - 1; i++)
         {
             Levels[i].SetActive(false);
+        }
+    }
+
+    void DisableImagesRecursively(Transform parent, bool b)
+    {
+        foreach (Transform child in parent)
+        {
+            // Check if the child has an Image component
+            Image imageComponent = child.GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                // Disable the Image component
+                imageComponent.enabled = b;
+            }
+
+            // Recursively call this function for all children of the current child
+            DisableImagesRecursively(child, b);
         }
     }
 }
