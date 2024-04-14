@@ -5,10 +5,15 @@ using UnityEngine;
 public class MovementHandler : MonoBehaviour
 {
     [SerializeField] CubeMovement[] Cubes;
+    [SerializeField] bool ifPerfectCube = false;
+
 
     private void Start()
     {
-        GameStartSequence();
+        if (!ifPerfectCube)
+        {
+            GameStartSequence();
+        }
     }
 
     public void GameStartSequence()

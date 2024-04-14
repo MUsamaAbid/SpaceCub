@@ -667,12 +667,20 @@ public class CubeMovement : MonoBehaviour
             speed = 750f;
         }
         movement = true;
+
+        if (gameObject.transform.parent.gameObject.transform.parent.name == "Perfect 2x2")
+            Debug.Log("Testing Check: Perfect cube Degree: " + movementDegree);
+
     }
     private void FixedUpdate()
     {
-        if(movement)
+        if (movement)
+        {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, TargetPos, Time.deltaTime * speed);
-        
+            //if (gameObject.transform.parent.gameObject.transform.parent.name == "Perfect 2x2")
+            //    Debug.Log("Testing correct: Perfect cube moving towards centre: " + TargetPos);
+        }
+
         if (transform.localPosition == TargetPos) movement = false;
     }
 }

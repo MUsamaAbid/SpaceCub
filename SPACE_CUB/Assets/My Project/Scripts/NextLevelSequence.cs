@@ -110,6 +110,7 @@ public class NextLevelSequence : MonoBehaviour
     {
         Debug.Log("Spread - " + PerfectCube.transform.GetChild(0).gameObject.name);
         //GetComponent<MovementHandler>().Centre();
+        if (PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>()) Debug.Log("Testing - Correct: Movement handler on perfect cube found");
         PerfectCube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>().Centre();
         //Set all perfect cube children images to disable
         //& thn turn them back on
@@ -117,7 +118,7 @@ public class NextLevelSequence : MonoBehaviour
         //so all the images are gone to centre
         DisableImagesRecursively(PerfectCube.transform, false);
         Debug.Log("Testing: PerfectCube Name: " + PerfectCube.transform.name);
-        Invoke("ResetPerfectCube", 0.5f);
+        Invoke("ResetPerfectCube", 2f);
         //PerfectCube.SetActive(false);
     }
 
