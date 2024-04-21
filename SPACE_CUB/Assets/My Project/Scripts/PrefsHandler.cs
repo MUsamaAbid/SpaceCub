@@ -14,6 +14,9 @@ public class PrefsHandler : MonoBehaviour
     public static string level = "level";
     #endregion
 
+    public static string unlockedLevelGalaxy2 = "unlockedLevelGalaxy2";
+    public static string unlockedLevelGalaxy3 = "unlockedLevelGalaxy3";
+
     public static string UnlockedGalaxy = "UnlockedGalaxy";
 
 }

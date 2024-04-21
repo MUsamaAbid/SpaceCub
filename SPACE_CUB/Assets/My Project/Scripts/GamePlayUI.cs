@@ -337,6 +337,8 @@ public class GamePlayUI : MonoBehaviour
         Star2Unfilled.GetComponent<Animator>().SetTrigger("Transparent");
         Star3Unfilled.GetComponent<Animator>().SetTrigger("Transparent");
         FinalStar.GetComponent<Animator>().SetTrigger("Transparent");
+
+        //Come back here for the stars
     }
     public void CalculateStars(int minClicks)
     {

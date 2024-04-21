@@ -30,8 +30,10 @@ public class NextLevelSequence : MonoBehaviour
             PerfectCube.SetActive(true);
 
             //NextLevelCube.SetActive(true);
-
+            Debug.Log("Testing Current level before addition: " + currentLevelIndex);
             currentLevelIndex++;
+            Debug.Log("Testing Current level after addition: " + currentLevelIndex);
+
             Levels[currentLevelIndex].SetActive(true);
 
             movementHandler = FindObjectsOfType<MovementHandler>();
@@ -70,14 +72,58 @@ public class NextLevelSequence : MonoBehaviour
     }
     void EnableNext3x3Level()
     {
+        //Grey3x3Cube.SetActive(true);
+        //Grey3x3Sprite.SetActive(false);
+
+        ////Debug.Log("Testing Level3x3 length" + levels )
+        //if (PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1 > Levels3x3.Length) return;
+
+        ////currentLevelIndex++;
+        ////Levels[currentLevelIndex].SetActive(true);
+
+        //PlayerPrefs.SetInt(PrefsHandler.currentLevel, PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1);
+
+        //Levels3x3[PlayerPrefs.GetInt(PrefsHandler.currentLevel)].SetActive(true);
+        //Debug.Log("Testing : Current level 3x3: " + PlayerPrefs.GetInt(PrefsHandler.currentLevel));
+
+        //movementHandler = FindObjectsOfType<MovementHandler>();
+
+        //for (int i = 0; i < movementHandler.Length; i++)
+        //{
+        //    movementHandler[i].GameStartSequence();
+        //}
+        //Invoke("Disable3x3Cube", 4f);
+
+        //#region 2x2 working start
+        //currentLevelIndex++;
+        //Levels[currentLevelIndex].SetActive(true);
+
+        //movementHandler = FindObjectsOfType<MovementHandler>();
+
+        //for (int i = 0; i < movementHandler.Length; i++)
+        //{
+        //    movementHandler[i].GameStartSequence();
+        //}
+
+        //Invoke("DisablePerfectCube", 4f);
+        //Debug.Log("Next leve cube setup Galaxy 1");
+        //#endregion 2x2 working end
+
         Grey3x3Cube.SetActive(true);
         Grey3x3Sprite.SetActive(false);
-        
-        if (PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1 > Levels3x3.Length) return;
 
-        PlayerPrefs.SetInt(PrefsHandler.currentLevel, PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1);
-        
-        Levels3x3[PlayerPrefs.GetInt(PrefsHandler.currentLevel)].SetActive(true);
+        Debug.Log("Testing Level3x3 length" + Levels3x3.Length);
+        //if (PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1 > Levels3x3.Length) return;
+
+        Debug.Log("Testing Current level before addition: " + currentLevelIndex);
+        currentLevelIndex++;
+        Debug.Log("Testing Current level after addition: " + currentLevelIndex);
+
+        //PlayerPrefs.SetInt(PrefsHandler.currentLevel, currentLevelIndex);
+        //PlayerPrefs.SetInt(PrefsHandler.unlockedLevelGalaxy2, currentLevelIndex);
+
+        Levels3x3[currentLevelIndex].SetActive(true);
+        Debug.Log("Testing : Current level 3x3: " + PlayerPrefs.GetInt(PrefsHandler.currentLevel));
 
         movementHandler = FindObjectsOfType<MovementHandler>();
 
@@ -121,7 +167,6 @@ public class NextLevelSequence : MonoBehaviour
         Invoke("ResetPerfectCube", 2f);
         //PerfectCube.SetActive(false);
     }
-
     void ResetPerfectCube()
     {
         DisableImagesRecursively(PerfectCube.transform, true);
@@ -130,6 +175,17 @@ public class NextLevelSequence : MonoBehaviour
 
     void Disable3x3Cube()
     {
+        if (Grey3x3Cube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>()) Debug.Log("Testing - Correct: Movement handler on perfect cube 3x3 found");
+        Grey3x3Cube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>().Centre();
+
+        DisableImagesRecursively(Grey3x3Cube.transform, false);
+        Debug.Log("Testing: PerfectCube 3x3 Name: " + PerfectCube.transform.name);
+        Invoke("ResetPerfectCube3x3", 2f);
+        //Grey3x3Cube.SetActive(false);
+    }
+    void ResetPerfectCube3x3()
+    {
+        DisableImagesRecursively(Grey3x3Cube.transform, true);
         Grey3x3Cube.SetActive(false);
     }
     void Disable4x4Cube()
@@ -139,6 +195,7 @@ public class NextLevelSequence : MonoBehaviour
     public void CurrentLevelIndex(int i)
     {
         currentLevelIndex = i;
+        Debug.Log("Testing currentLevelIndex - Set to: " + i);
     }
     public void DisableAllLevels()
     {

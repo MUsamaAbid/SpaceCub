@@ -10,20 +10,30 @@ public class MMLevelEnabler : MonoBehaviour
     [SerializeField] GameObject GalaxyGameObject;
     [SerializeField] int Galaxy;
 
-    void EnableLevel(int levelNumber)
+    private void OnEnable()
     {
-        if (levelNumber > Levels.Length - 1) 
-        {
-            Debug.LogError("Level count doesnt exist");
-            return;
-        }
-        Levels[levelNumber].GetComponent<EnableLevel>().EnableCurrentLevel();
-        //Levels[levelNumber].
+        SetCurrentGalaxyInMenu();
+        EnableAllLevels();
     }
     private void Start()
     {
         //EnableLevel(0);
         //EnableAllLevels();
+    }
+    void SetCurrentGalaxyInMenu()
+    {
+        if (Galaxy == 1)
+        {
+            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 0);
+        }
+        else if (Galaxy == 2)
+        {
+            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 1);
+        }
+        else if (Galaxy == 3)
+        {
+            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 2);
+        }
     }
     void EnableAllLevels()
     {
@@ -39,6 +49,16 @@ public class MMLevelEnabler : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
         }
         //GalaxyGameObject.SetActive(false);
+    }
+    void EnableLevel(int levelNumber)
+    {
+        if (levelNumber > Levels.Length - 1)
+        {
+            Debug.LogError("Level count doesnt exist");
+            return;
+        }
+        Levels[levelNumber].GetComponent<EnableLevel>().EnableCurrentLevel();
+        //Levels[levelNumber].
     }
     private void OnDisable()
     {
@@ -66,26 +86,5 @@ public class MMLevelEnabler : MonoBehaviour
         CloseAllLevels();
         //GalaxyGameObject.SetActive(false);
         FindObjectOfType<MainMenuManager>().StartLevel(level);
-    }
-
-    private void OnEnable()
-    {
-        SetCurrentGalaxyInMenu();
-        EnableAllLevels();
-    }
-    void SetCurrentGalaxyInMenu()
-    {
-        if (Galaxy == 1)
-        {
-            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 0);
-        }
-        else if (Galaxy == 2)
-        {
-            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 1);
-        }
-        else if (Galaxy == 3)
-        {
-            PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, 2);
-        }
     }
 }

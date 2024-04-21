@@ -668,8 +668,8 @@ public class CubeMovement : MonoBehaviour
         }
         movement = true;
 
-        if (gameObject.transform.parent.gameObject.transform.parent.name == "Perfect 2x2")
-            Debug.Log("Testing Check: Perfect cube Degree: " + movementDegree);
+        //if (gameObject.transform.parent.gameObject.transform.parent.name == "Perfect 2x2")
+        //    Debug.Log("Testing Check: Perfect cube Degree: " + movementDegree);
 
     }
     private void FixedUpdate()
