@@ -72,6 +72,7 @@ public class NextLevelSequence : MonoBehaviour
     }
     void EnableNext3x3Level()
     {
+        #region old
         //Grey3x3Cube.SetActive(true);
         //Grey3x3Sprite.SetActive(false);
 
@@ -93,22 +94,7 @@ public class NextLevelSequence : MonoBehaviour
         //    movementHandler[i].GameStartSequence();
         //}
         //Invoke("Disable3x3Cube", 4f);
-
-        //#region 2x2 working start
-        //currentLevelIndex++;
-        //Levels[currentLevelIndex].SetActive(true);
-
-        //movementHandler = FindObjectsOfType<MovementHandler>();
-
-        //for (int i = 0; i < movementHandler.Length; i++)
-        //{
-        //    movementHandler[i].GameStartSequence();
-        //}
-
-        //Invoke("DisablePerfectCube", 4f);
-        //Debug.Log("Next leve cube setup Galaxy 1");
-        //#endregion 2x2 working end
-
+        #endregion old
         Grey3x3Cube.SetActive(true);
         Grey3x3Sprite.SetActive(false);
 
@@ -140,9 +126,9 @@ public class NextLevelSequence : MonoBehaviour
         
         if (PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1 > Levels4x4.Length) return;
 
-        PlayerPrefs.SetInt(PrefsHandler.currentLevel, PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1);
-        
-        Levels4x4[PlayerPrefs.GetInt(PrefsHandler.currentLevel)].SetActive(true);
+        //PlayerPrefs.SetInt(PrefsHandler.currentLevel, PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1);
+        currentLevelIndex++;
+        Levels4x4[currentLevelIndex].SetActive(true);
 
         movementHandler = FindObjectsOfType<MovementHandler>();
 
@@ -190,6 +176,19 @@ public class NextLevelSequence : MonoBehaviour
     }
     void Disable4x4Cube()
     {
+        //   Grey4x4Cube.SetActive(false);
+
+        if (Grey4x4Cube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>()) Debug.Log("Testing - Correct: Movement handler on perfect cube 3x3 found");
+        Grey4x4Cube.transform.GetChild(0).gameObject.GetComponent<MovementHandler>().Centre();
+
+        DisableImagesRecursively(Grey4x4Cube.transform, false);
+        Debug.Log("Testing: PerfectCube 3x3 Name: " + PerfectCube.transform.name);
+        Invoke("ResetPrefectCube4x4", 2f);
+    }
+
+    void ResetPrefectCube4x4()
+    {
+        DisableImagesRecursively(Grey4x4Cube.transform, true);
         Grey4x4Cube.SetActive(false);
     }
     public void CurrentLevelIndex(int i)
