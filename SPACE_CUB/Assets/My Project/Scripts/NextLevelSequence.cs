@@ -30,9 +30,9 @@ public class NextLevelSequence : MonoBehaviour
             PerfectCube.SetActive(true);
 
             //NextLevelCube.SetActive(true);
-            Debug.Log("Testing Current level before addition: " + currentLevelIndex);
+            //Debug.Log("Testing Current level before addition: " + currentLevelIndex);
             currentLevelIndex++;
-            Debug.Log("Testing Current level after addition: " + currentLevelIndex);
+            //Debug.Log("Testing Current level after addition: " + currentLevelIndex);
 
             Levels[currentLevelIndex].SetActive(true);
 

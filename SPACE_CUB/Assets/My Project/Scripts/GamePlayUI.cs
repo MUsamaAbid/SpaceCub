@@ -172,6 +172,7 @@ public class GamePlayUI : MonoBehaviour
         else if (PlayerPrefs.GetInt(PrefsHandler.stars) == 2)
         {
             TwoStarFilled.SetActive(true);
+            //Star3Unfilled.SetActive(true);
 
             Star1Filled.SetActive(false);
             Star2Filled.SetActive(false);
@@ -334,9 +335,13 @@ public class GamePlayUI : MonoBehaviour
     public void MakeStarsTransparent()
     {
         Star1Filled.GetComponent<Animator>().SetTrigger("Transparent");
+        Star2Filled.GetComponent<Animator>().SetTrigger("Transparent");
+        Star3Filled.GetComponent<Animator>().SetTrigger("Transparent");
         Star2Unfilled.GetComponent<Animator>().SetTrigger("Transparent");
         Star3Unfilled.GetComponent<Animator>().SetTrigger("Transparent");
         FinalStar.GetComponent<Animator>().SetTrigger("Transparent");
+        TwoStarFilled.GetComponent<Animator>().SetTrigger("Transparent");
+        OneStarFilled.GetComponent<Animator>().SetTrigger("Transparent");
 
         //Come back here for the stars
     }
@@ -352,9 +357,9 @@ public class GamePlayUI : MonoBehaviour
             PlayerPrefs.SetInt(PrefsHandler.stars, 1);
 
         //Testing logic
-        PlayerPrefs.SetInt(PrefsHandler.stars, 3);
+        //PlayerPrefs.SetInt(PrefsHandler.stars, 3);
         
-        Debug.Log("stars: " + PlayerPrefs.GetInt(PrefsHandler.stars));
+        //Debug.Log("stars: " + PlayerPrefs.GetInt(PrefsHandler.stars));
     }
     public void StartTimer()
     {
@@ -462,6 +467,14 @@ public class GamePlayUI : MonoBehaviour
     void DisableFinalStar()
     {
         FinalStar.gameObject.SetActive(false);
+        TwoStarFilled.gameObject.SetActive(false);
+        OneStarFilled.gameObject.SetActive(false);
+        Star1Filled.gameObject.SetActive(false);
+        Star2Filled.gameObject.SetActive(false);
+        Star3Filled.gameObject.SetActive(false);
+        Star2Unfilled.gameObject.SetActive(false);
+        Star3Unfilled.gameObject.SetActive(false);
+        Debug.Log("Testing final star disabled");
     }
     void DisableLevelText()
     {
