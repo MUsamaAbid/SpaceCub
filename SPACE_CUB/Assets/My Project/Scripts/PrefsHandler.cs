@@ -19,4 +19,5 @@ public class PrefsHandler : MonoBehaviour
 
     public static string UnlockedGalaxy = "UnlockedGalaxy";
 
+    public static string SceneUnlock = "SceneUnlock";
 }
