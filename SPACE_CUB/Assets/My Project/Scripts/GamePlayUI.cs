@@ -357,7 +357,7 @@ public class GamePlayUI : MonoBehaviour
             PlayerPrefs.SetInt(PrefsHandler.stars, 1);
 
         //Testing logic
-        //PlayerPrefs.SetInt(PrefsHandler.stars, 3);
+        PlayerPrefs.SetInt(PrefsHandler.stars, 1);
         
         //Debug.Log("stars: " + PlayerPrefs.GetInt(PrefsHandler.stars));
     }
