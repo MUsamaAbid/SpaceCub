@@ -27,6 +27,12 @@ public class SceneHandler : MonoBehaviour
             int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
             FindObjectOfType<Levels>().StartLevel(galaxy, level);
         }
+        else if (PlayerPrefs.GetInt(PrefsHandler.SceneUnlock) == 1)
+        {
+            StartScreen.SetActive(false);
+            MenuScreen.SetActive(true);
+        }
+        
         PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 0);
     }
 
@@ -34,6 +40,11 @@ public class SceneHandler : MonoBehaviour
     {
         PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 3);
         ReloadScene();
+    }
+    public void LoadLevelSelection()
+    {
+        PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 1);
+        SceneManager.LoadScene(0);
     }
     public void ReloadScene()
     {

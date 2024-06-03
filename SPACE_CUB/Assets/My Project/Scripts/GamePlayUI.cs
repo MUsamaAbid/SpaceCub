@@ -83,6 +83,8 @@ public class GamePlayUI : MonoBehaviour
     [Header("Script Ref")]
     [SerializeField] Counter counter;
 
+    [SerializeField] Text GalaxyAndLevel; 
+
     TimeSpan timePlaying;
     bool timerGoing;
     float elapsedTime;
@@ -357,8 +359,9 @@ public class GamePlayUI : MonoBehaviour
             PlayerPrefs.SetInt(PrefsHandler.stars, 1);
 
         //Testing logic
-        PlayerPrefs.SetInt(PrefsHandler.stars, 1);
-        
+        //Come back here for the stars
+        //PlayerPrefs.SetInt(PrefsHandler.stars, 1);
+
         //Debug.Log("stars: " + PlayerPrefs.GetInt(PrefsHandler.stars));
     }
     public void StartTimer()
@@ -399,6 +402,12 @@ public class GamePlayUI : MonoBehaviour
     {
         MainMenu.SetActive(true);
     }
+
+    public void UpdateGalaxyAndLevel(int galaxy, int level)
+    {
+        GalaxyAndLevel.text = "LEVEL " + level.ToString() + " - " + galaxy.ToString();
+    }
+
     #region Loading Menu
     public void EnableLoadingScreen()
     {
