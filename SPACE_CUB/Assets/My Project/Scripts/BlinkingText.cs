@@ -8,12 +8,36 @@ public class BlinkingText : MonoBehaviour
 {
     public Text text;
     public TextMeshProUGUI textMeshPro;
-    
+
+    public float blinkInterval = 1.0f; // Blink interval in seconds
+
+    private bool isTextEnabled = true;
+    private float timer = 0f;
+
     private void Start()
     {
         StartBlinking();
+
+        // Check if TextMeshPro component is assigned
+        if (textMeshPro == null)
+        {
+            Debug.LogError("TextMeshPro component is not assigned!");
+            enabled = false;
+            return;
+        }
+
+        // Start the blinking coroutine
+        StartCoroutine(BlinkText());
     }
-    
+    IEnumerator BlinkText()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(blinkInterval);
+            isTextEnabled = !isTextEnabled;
+            textMeshPro.enabled = isTextEnabled;
+        }
+    }
     IEnumerator Blink()
     {
         while (true)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PrefsHandler : MonoBehaviour
 {
+    public static string Intro = "Intro";
+
     public static string currentGalaxy = "currentGalaxy";
     public static string currentLevel = "currentLevel";
     public static string stars = "currentStars";
@@ -21,4 +23,14 @@ public class PrefsHandler : MonoBehaviour
     public static string UnlockedGalaxy = "UnlockedGalaxy";
 
     public static string SceneUnlock = "SceneUnlock";
+
+    public void ResetPrefs()
+    {
+        PlayerPrefs.SetInt(Intro, 0);
+        PlayerPrefs.SetInt(unlockedLevelGalaxy1, 0);
+        PlayerPrefs.SetInt(unlockedLevelGalaxy2, 0);
+        PlayerPrefs.SetInt(unlockedLevelGalaxy3, 0);
+        PlayerPrefs.SetInt(UnlockedGalaxy, 0);
+        PlayerPrefs.SetInt(SceneUnlock, 0);
+    }
 }
