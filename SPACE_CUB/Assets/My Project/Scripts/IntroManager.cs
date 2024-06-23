@@ -27,6 +27,9 @@ public class IntroManager : MonoBehaviour
 
     [SerializeField] AudioClip IntroClip;
 
+    Coroutine ChangeTextCoroutine;
+    Coroutine PostBigBangTextCoroutine;
+
     private void OnEnable()
     {
         Invoke("EnableSkipButton", 9f);
@@ -40,7 +43,7 @@ public class IntroManager : MonoBehaviour
     }
     void StartTextCoroutine()
     {
-        StartCoroutine(ChangeText());
+        ChangeTextCoroutine = StartCoroutine(ChangeText());
     }
 
     private void PlayIntroSound()
@@ -80,7 +83,7 @@ public class IntroManager : MonoBehaviour
 
     void StartPostBigBang()
     {
-        StartCoroutine(PostBigBangText());
+        PostBigBangTextCoroutine = StartCoroutine(PostBigBangText());
     }
     IEnumerator PostBigBangText()
     {
@@ -102,10 +105,26 @@ public class IntroManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
+        StopCoroutine(ChangeTextCoroutine);
+        StopCoroutine(PostBigBangTextCoroutine);
+
+        ResetText();
+
         MainMenu.SetActive(true);
         StartScreen.SetActive(false);
         EndingBackground.SetActive(false);
         EndingCube.SetActive(false);
         gameObject.SetActive(false);
+    }
+    void ResetText()
+    {
+        foreach(var i in Intro)
+        {
+            i.GetComponent<Animator>().SetTrigger("Reset");
+        }
+        foreach (var i in Intro)
+        {
+            i.gameObject.SetActive(false);
+        }
     }
 }
