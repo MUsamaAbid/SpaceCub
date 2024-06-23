@@ -159,7 +159,7 @@ PlayerSettings:
     iPhone: com.spacecub.spacecub
   buildNumber:
     Standalone: 0
-    iPhone: 1
+    iPhone: 2
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
@@ -274,7 +274,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f36b520e6eff94ea2a42e836ada32a2f, type: 3}
+      m_Icon: {fileID: 2800000, guid: 6d4de4f88e979401bbbe958daaa0cbbb, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

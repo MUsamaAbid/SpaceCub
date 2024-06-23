@@ -5,49 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Mainmenu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Settings.unity
-    guid: 7859776bda7c47049b167319b1b1032e
-  - enabled: 0
-    path: Assets/Scenes/GameProgress.unity
-    guid: 0d43ff2c8f6706546b4b83b73be1f6ad
-  - enabled: 0
-    path: Assets/Scenes/About.unity
-    guid: f4fd2f83381eb1840ab43df08072c867
-  - enabled: 0
-    path: Assets/Scenes/Intro.unity
-    guid: 7439fc58f0e76574ba71115937ae0f47
-  - enabled: 0
-    path: Assets/Scenes/ChooseGalaxy0Bigbang.unity
-    guid: 370c1fb99133d0644bec6a9291ca1d58
-  - enabled: 0
-    path: Assets/Scenes/ChooseGalaxy1Andromeda.unity
-    guid: 384193bc26eaf6a4cbcb40edb18dfa57
-  - enabled: 0
-    path: Assets/Scenes/ChooseGalaxy2Magallanes.unity
-    guid: 1055abd87cbd1c2429407bd59633007f
-  - enabled: 0
-    path: Assets/Scenes/ChooseGalaxy3Milkyway.unity
-    guid: 315dc31f386e9e34d989c0a16c8943e0
-  - enabled: 0
-    path: Assets/Scenes/ChooseLevel1Andromeda.unity
-    guid: 2ea80f325efc1cb4bb6fb2d06d2dc7d4
-  - enabled: 0
-    path: Assets/Scenes/ChooseLevel1Magallanes.unity
-    guid: ea90ac08eb0325a488c31041e728f492
-  - enabled: 0
-    path: Assets/Scenes/ChooseLevel1Milkyway.unity
-    guid: 631c9423bfa67ed41b2fb336cff4ac18
   - enabled: 1
     path: Assets/Scenes/PuzzleLevel1Andromeda.unity
     guid: 978b4922b33d4e6489b176498c2cd7f6
-  - enabled: 0
-    path: Assets/Scenes/PuzzleLevel1Magallanes.unity
-    guid: 348a3fefabe10524dbc7b4b14c9e2a53
-  - enabled: 0
-    path: Assets/Scenes/PuzzleLevel1Milkyway.unity
-    guid: 23bfd08d034cd1342af47d125a0f2286
   m_configObjects: {}

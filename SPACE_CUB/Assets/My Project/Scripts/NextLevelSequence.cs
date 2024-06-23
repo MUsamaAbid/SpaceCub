@@ -33,46 +33,82 @@ public class NextLevelSequence : MonoBehaviour
             //Debug.Log("Testing Current level before addition: " + currentLevelIndex);
             currentLevelIndex++;
             //Debug.Log("Testing Current level after addition: " + currentLevelIndex);
-
-            Levels[currentLevelIndex].SetActive(true);
-
-            movementHandler = FindObjectsOfType<MovementHandler>();
-
-            for (int i = 0; i < movementHandler.Length; i++)
+            if (currentLevelIndex >= 19)
             {
-                movementHandler[i].GameStartSequence();
+                //Unlock Level 1 of next Galaxy
+                currentLevelIndex = -1;
+                SecondGalaxyLevelSetup();
             }
+            else
+            {
+                Levels[currentLevelIndex].SetActive(true);
 
-            Invoke("DisablePerfectCube", 4f);
-            Debug.Log("Next leve cube setup Galaxy 1");
+                movementHandler = FindObjectsOfType<MovementHandler>();
+
+                for (int i = 0; i < movementHandler.Length; i++)
+                {
+                    movementHandler[i].GameStartSequence();
+                }
+
+                Invoke("DisablePerfectCube", 4f);
+                Debug.Log("Next leve cube setup Galaxy 1");
+            }
         }
 
         else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 1)
         {
-            Debug.Log("3x3 galaxy");
-            Grey3x3Sprite.SetActive(true);
-            Grey3x3Sprite.GetComponent<Animator>().SetTrigger("Rescale");
-
-            Invoke("EnableNext3x3Level", 0.6f);
-            Debug.Log("Next leve cube setup Galaxy 2");
+            if(currentLevelIndex + 1 >= 38)
+            {
+                currentLevelIndex = -1;
+                ThirdGalaxyLevelSetup();
+            }
+            else
+            {
+                SecondGalaxyLevelSetup();
+            }
         }
 
         else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 2)
         {
-            Debug.Log("4x4 galaxy");
-            Grey4x4Sprite.SetActive(true);
-            Grey4x4Sprite.GetComponent<Animator>().SetTrigger("Rescale");
-
-            Invoke("EnableNext4x4Level", 0.6f);
-            Debug.Log("Next leve cube setup Galaxy 3");
+            if(currentLevelIndex + 1 >= 7)
+            {
+                currentLevelIndex = -1;
+                //Go To main Menu
+                FindObjectOfType<SceneHandler>().ReloadScene();
+            }
+            else
+            {
+                ThirdGalaxyLevelSetup();
+            }
         }
 
         if (FindObjectOfType<GamePlayUI>()) Debug.LogError("Found Rotation GamePlayUI");
         FindObjectOfType<GamePlayUI>().ResetLevelChangeUI();
     }
+
+    private void ThirdGalaxyLevelSetup()
+    {
+        Debug.Log("4x4 galaxy");
+        Grey4x4Sprite.SetActive(true);
+        Grey4x4Sprite.GetComponent<Animator>().SetTrigger("Rescale");
+
+        Invoke("EnableNext4x4Level", 0.6f);
+        Debug.Log("Next leve cube setup Galaxy 3");
+    }
+
+    private void SecondGalaxyLevelSetup()
+    {
+        Debug.Log("3x3 galaxy");
+        Grey3x3Sprite.SetActive(true);
+        Grey3x3Sprite.GetComponent<Animator>().SetTrigger("Rescale");
+
+        Invoke("EnableNext3x3Level", 0.6f);
+        Debug.Log("Next leve cube setup Galaxy 2");
+    }
+
     void EnableNext3x3Level()
     {
-        #region old
+        #region old-not used
         //Grey3x3Cube.SetActive(true);
         //Grey3x3Sprite.SetActive(false);
 
