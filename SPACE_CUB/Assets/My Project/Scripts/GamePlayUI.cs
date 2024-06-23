@@ -13,6 +13,9 @@ public enum Stars
 
 public class GamePlayUI : MonoBehaviour
 {
+    [SerializeField] GameObject CubeBlocker;
+    [SerializeField] GameObject FullScreenBlocker;
+
     #region Public fields
     [Header("Texts")]
     [SerializeField] Text ScoreText;
@@ -279,6 +282,8 @@ public class GamePlayUI : MonoBehaviour
     }
     public void DisableEndingUI(int i)
     {
+        FullScreenBlocker.SetActive(true);
+
         Invoke("DisableEndingUI", i);
     }
     #endregion
@@ -368,6 +373,9 @@ public class GamePlayUI : MonoBehaviour
     {
         if (timerGoing) return;
 
+        CubeBlocker.SetActive(false);
+        FullScreenBlocker.SetActive(false);
+
         Debug.Log("Timer start");
         elapsedTime = 0f;
         timerGoing = true;
@@ -377,6 +385,8 @@ public class GamePlayUI : MonoBehaviour
     }
     public void StopTimer()
     {
+        CubeBlocker.SetActive(true);
+
         StopCoroutine(TimerCoroutine);
         timerGoing = false;
         TimeText.gameObject.transform.localPosition = new Vector3(-180, -432, 0);
