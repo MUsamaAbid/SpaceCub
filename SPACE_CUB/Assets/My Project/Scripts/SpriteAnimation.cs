@@ -36,7 +36,9 @@ public class SpriteAnimation : MonoBehaviour
         //Debug.Log("Time Now: " + Time.time);
 
         Sprite[] sprites = spriteChanger[index].sprites;
-        float interval = spriteChanger[index].interval;
+        //float interval = spriteChanger[index].interval;
+        float interval = 0.0050505f;
+
         GameObject TargetSprite = spriteChanger[index].TargetSprite.gameObject;
         bool ifSetNative = spriteChanger[index].ifSetNative;
 

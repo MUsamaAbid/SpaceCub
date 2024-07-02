@@ -72,7 +72,7 @@ public class MMLevelEnabler : MonoBehaviour
         for (int i = 0; i <= openLevel - 1; i++)
         {
             Levels[i].GetComponent<EnableLevel>().EnableCurrentLevel();
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.2f);
         }
         //GalaxyGameObject.SetActive(false);
     }
