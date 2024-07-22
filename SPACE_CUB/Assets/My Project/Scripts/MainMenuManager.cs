@@ -18,7 +18,31 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject LoadingScreen;
     [SerializeField] GameObject LoadingFiller;
 
+    [Header("Locks")]
+    [SerializeField] GameObject Lock2;
+    [SerializeField] GameObject Lock3;
+
     int currentLevel;
+
+    private void OnEnable()
+    {
+        int unlockedGalaxy = PlayerPrefs.GetInt(PrefsHandler.UnlockedGalaxy);
+        Debug.Log("Unlocked Galaxy: " + unlockedGalaxy);
+        if(unlockedGalaxy == 2)
+        {
+            Lock2.SetActive(false);
+        }
+        else if(unlockedGalaxy == 3)
+        {
+            Lock2.SetActive(false);
+            Lock3.SetActive(false);
+        }
+        else
+        {
+            Lock2.SetActive(true);
+            Lock3.SetActive(true);
+        }
+    }
 
     public void GoToMainMenu()
     {

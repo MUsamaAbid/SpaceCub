@@ -57,7 +57,7 @@ public class NextLevelSequence : MonoBehaviour
 
         else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 1)
         {
-            if(currentLevelIndex + 1 >= 38)
+            if (currentLevelIndex + 1 >= 38)
             {
                 currentLevelIndex = -1;
                 ThirdGalaxyLevelSetup();
@@ -70,7 +70,7 @@ public class NextLevelSequence : MonoBehaviour
 
         else if (PlayerPrefs.GetInt(PrefsHandler.currentGalaxy) == 2)
         {
-            if(currentLevelIndex + 1 >= 7)
+            if (currentLevelIndex + 1 >= 7)
             {
                 currentLevelIndex = -1;
                 //Go To main Menu
@@ -88,6 +88,8 @@ public class NextLevelSequence : MonoBehaviour
 
     private void ThirdGalaxyLevelSetup()
     {
+        PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, 3);
+
         Debug.Log("4x4 galaxy");
         Grey4x4Sprite.SetActive(true);
         Grey4x4Sprite.GetComponent<Animator>().SetTrigger("Rescale");
@@ -98,6 +100,8 @@ public class NextLevelSequence : MonoBehaviour
 
     private void SecondGalaxyLevelSetup()
     {
+        PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, 2);
+        Debug.Log("Second galaxy unlocked");
         Debug.Log("3x3 galaxy");
         Grey3x3Sprite.SetActive(true);
         Grey3x3Sprite.GetComponent<Animator>().SetTrigger("Rescale");
@@ -131,6 +135,7 @@ public class NextLevelSequence : MonoBehaviour
         //}
         //Invoke("Disable3x3Cube", 4f);
         #endregion old
+
         Grey3x3Cube.SetActive(true);
         Grey3x3Sprite.SetActive(false);
 

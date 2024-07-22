@@ -14,7 +14,7 @@ public class BlinkingText : MonoBehaviour
     private bool isTextEnabled = true;
     private float timer = 0f;
 
-    private void Start()
+    private void OnEnable()
     {
         StartBlinking();
 
@@ -29,6 +29,21 @@ public class BlinkingText : MonoBehaviour
         // Start the blinking coroutine
         StartCoroutine(BlinkText());
     }
+    /*private void Start()
+    {
+        StartBlinking();
+
+        // Check if TextMeshPro component is assigned
+        if (textMeshPro == null)
+        {
+            Debug.LogError("TextMeshPro component is not assigned!");
+            enabled = false;
+            return;
+        }
+
+        // Start the blinking coroutine
+        StartCoroutine(BlinkText());
+    }*/
     IEnumerator BlinkText()
     {
         while (true)
@@ -69,5 +84,9 @@ public class BlinkingText : MonoBehaviour
     void StopBlinking()
     {
         StopCoroutine("Blink");
+    }
+    private void OnDisable()
+    {
+        StopBlinking();
     }
 }

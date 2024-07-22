@@ -43,7 +43,7 @@ public class LevelHandler : MonoBehaviour
 
         Debug.Log("Testing: Level: " + Level + "- Galaxy: " + Galaxy);
 
-        PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, Level + 1);
+        //PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, Level + 1);
 
         FindObjectOfType<GamePlayUI>().UpdateGalaxyAndLevel(Galaxy + 1, Level + 1);
     }

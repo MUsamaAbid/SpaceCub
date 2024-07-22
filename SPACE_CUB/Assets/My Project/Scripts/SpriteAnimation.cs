@@ -55,7 +55,7 @@ public class SpriteAnimation : MonoBehaviour
         if(spriteCoroutine != null)
         {
             StopCoroutine(spriteCoroutine);
-            Debug.Log("SpriteChanging Coroutine stopped");
+           // Debug.Log("SpriteChanging Coroutine stopped");
         }
 
         Sprite[] sprites = spriteChanger[index].sprites;
@@ -64,7 +64,7 @@ public class SpriteAnimation : MonoBehaviour
         bool ifSetNative = spriteChanger[index].ifSetNative;
 
         TargetSprite.gameObject.GetComponent<Image>().sprite = sprites[sprites.Length - 1];
-        Debug.Log("TargetSprite: " + TargetSprite.gameObject.name + " Image attached: " + sprites[sprites.Length - 1].name);
+//        Debug.Log("TargetSprite: " + TargetSprite.gameObject.name + " Image attached: " + sprites[sprites.Length - 1].name);
 
         if (ifSetNative) spriteChanger[index].TargetSprite.SetNativeSize();
     }
