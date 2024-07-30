@@ -12,6 +12,7 @@ public class Levels : MonoBehaviour
     {
         if(galaxy == 0)
         {
+            Debug.Log("Testing: Level: " + level);
             Debug.Log("Galaxy: " + galaxy + " of level: " + (level - 1));
             Galaxy1[level - 1].SetActive(true);
         }

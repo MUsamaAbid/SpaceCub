@@ -89,7 +89,7 @@ public class MMLevelEnabler : MonoBehaviour
     private void OnDisable()
     {
         CloseAllLevels();
-        Debug.Log("DISABLE");
+        //Debug.Log("DISABLE");
     }
     public void CloseAllLevels()
     {
@@ -97,7 +97,7 @@ public class MMLevelEnabler : MonoBehaviour
             StopCoroutine(mapCoroutine);
         
         StartCoroutine(CloseMap());
-        Debug.Log("COROUTINE foR MAP OPENIng STOPped");
+        //Debug.Log("COROUTINE foR MAP OPENIng STOPped");
     }
     IEnumerator CloseMap()
     {
@@ -111,6 +111,7 @@ public class MMLevelEnabler : MonoBehaviour
     {
         CloseAllLevels();
         //GalaxyGameObject.SetActive(false);
+        Debug.Log("Testing: Level sent: " + level);
         FindObjectOfType<MainMenuManager>().StartLevel(level);
     }
 }
