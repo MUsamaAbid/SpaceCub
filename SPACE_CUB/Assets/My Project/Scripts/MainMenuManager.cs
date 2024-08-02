@@ -100,6 +100,7 @@ public class MainMenuManager : MonoBehaviour
 
         LevelsScreen.SetActive(true);
         int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
+        Debug.Log("Testing: Current galaxy is: " + galaxy);
         FindObjectOfType<Levels>().StartLevel(galaxy, level);
 
         MainMenu.SetActive(false);

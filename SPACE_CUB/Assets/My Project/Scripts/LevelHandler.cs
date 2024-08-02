@@ -13,6 +13,7 @@ public class LevelHandler : MonoBehaviour
     {
         FindObjectOfType<NextLevelSequence>().CurrentLevelIndex(Level);//Its getting set from here so the issue is in "Level"
 
+        PlayerPrefs.SetInt(PrefsHandler.currentLevel, Level);
         PlayerPrefs.SetInt(PrefsHandler.currentGalaxy, Galaxy);
         PlayerPrefs.SetInt(PrefsHandler.minClick, MinClicks);
 

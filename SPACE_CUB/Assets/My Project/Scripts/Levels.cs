@@ -18,11 +18,11 @@ public class Levels : MonoBehaviour
         }
         else if(galaxy == 1)
         {
-            Galaxy1[level - 1].SetActive(true);
+            Galaxy2[level - 1].SetActive(true);
         }
         else if(galaxy == 2)
         {
-            Galaxy1[level - 1].SetActive(true);
+            Galaxy3[level - 1].SetActive(true);
         }
     }
 }
