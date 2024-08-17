@@ -47,7 +47,7 @@ public class IndexingManager : MonoBehaviour
         priorities.Sort();
     }
 
-    public void PressedIndex(int i, int index)
+    public void PressedIndex(int i, int index, bool check)
     {
         //if(priorities.Count != 0)
         //{
@@ -78,7 +78,8 @@ public class IndexingManager : MonoBehaviour
         //if(index == 0)
         //    CheckForSequence();
         
-        if (index == 0)
+        //if (index == 0)
+        if (check)
             CheckForSequence();
       
         MakeLastChild(index);
@@ -170,7 +171,9 @@ public class IndexingManager : MonoBehaviour
         //    Debug.Log("List is empty. Game Finish");
         //    //FindObjectOfType<MovementHandler>().GameEndSequence();
         //}
-        Debug.Log("In indexing manager again- isLevelFinish: " + ifLevelFinished);
+
+        Debug.Log("Testing : Checking for sequence");
+
         for (int i = 0; i < cubes.Length; i++)
         {
             if (!cubes[i].Sequence())

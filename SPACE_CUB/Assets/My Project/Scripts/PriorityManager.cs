@@ -22,7 +22,12 @@ public class PriorityManager : MonoBehaviour
         if (!indexingManager) indexingManager = GetComponentInParent<IndexingManager>();
         if (!indexingManager) Debug.LogError("Could not find the indexing manager");
 
-        indexingManager.PressedIndex(priority, transform.GetSiblingIndex());
+        bool check;
+        if (index == 0) check = true;
+        else check = false;
+
+        indexingManager.PressedIndex(priority, transform.GetSiblingIndex(), check);
+        //indexingManager.PressedIndex(priority, index);
     }
     public void SetPressedColor(Color color)
     {
