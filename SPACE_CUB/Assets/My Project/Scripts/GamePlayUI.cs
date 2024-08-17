@@ -249,6 +249,10 @@ public class GamePlayUI : MonoBehaviour
         {
             Invoke("InstantiateConfetti", 0.6f);
         }
+        else
+        {
+            Invoke("DisplayCongratulationsScreen", 0.6f); //Displays for other stars as well
+        }
         FinalCube.GetComponent<SpriteChanging>().StartRotation();
     }
 
@@ -257,7 +261,8 @@ public class GamePlayUI : MonoBehaviour
         GameObject g = Instantiate(Confetti);
         g.transform.position = new Vector3(0, 0, 0);
 
-        CongratulationsScreen.SetActive(true);
+        DisplayCongratulationsScreen();
+        //CongratulationsScreen.SetActive(true);
     }
 
     void DisableGamePlayButtons()
@@ -355,13 +360,22 @@ public class GamePlayUI : MonoBehaviour
     public void CalculateStars(int minClicks)
     {
         if (clicks <= minClicks)
+        {
             PlayerPrefs.SetInt(PrefsHandler.stars, 3);
-       
+            CongratulationsScreen.GetComponent<Text>().text = "Congratulations! You did great.";
+        }
+
         else if (clicks <= (minClicks * 2))
+        {
             PlayerPrefs.SetInt(PrefsHandler.stars, 2);
-        
+            CongratulationsScreen.GetComponent<Text>().text = "Congratulations! Almost there.";
+        }
+
         else
+        {
             PlayerPrefs.SetInt(PrefsHandler.stars, 1);
+            CongratulationsScreen.GetComponent<Text>().text = "Well              You could do better";
+        }
 
         //Testing logic
         //Come back here for the stars
