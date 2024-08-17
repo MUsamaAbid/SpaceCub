@@ -198,6 +198,16 @@ public class GamePlayUI : MonoBehaviour
     }
     void DisplayScore()
     {
+        int stars = PlayerPrefs.GetInt(PrefsHandler.stars);
+        if (stars >= 3)
+        {
+            ScoreText.color = Color.red;
+        }
+        else
+        {
+            ScoreText.color = new Color32(104, 111, 132, 255); // Equivalent to #686F84
+        }
+        
         ScoreText.gameObject.SetActive(true);
     }
     public void EnableClicks()
@@ -217,6 +227,17 @@ public class GamePlayUI : MonoBehaviour
     }
     void DisplayClick()
     {
+        //686F84
+        int stars = PlayerPrefs.GetInt(PrefsHandler.stars);
+        if (stars >= 2)
+        {
+            ClicksText.color = Color.blue;
+        }
+        else
+        {
+            ClicksText.color = new Color32(104, 111, 132, 255); // Equivalent to #686F84
+        }
+    
         ClicksText.gameObject.SetActive(true);
     }
     public void EnableTime()
@@ -227,6 +248,21 @@ public class GamePlayUI : MonoBehaviour
     }
     void DisplayTime()
     {
+        //int stars = PlayerPrefs.GetInt(PrefsHandler.stars);
+        //if (stars >= 1)
+        //{
+        //    TimeText.color = Color.green;
+        //    MinsText.color = Color.green;
+        //    SecondsText.color = Color.green;
+        //    MilliText.color = Color.green;
+        //}
+        //else
+        //{
+        //    TimeText.color = new Color32(104, 111, 132, 255); // Equivalent to #686F84
+        //    MinsText.color = new Color32(104, 111, 132, 255);
+        //    SecondsText.color = new Color32(104, 111, 132, 255);
+        //    MilliText.color = new Color32(104, 111, 132, 255);
+        //}
         TimeText.gameObject.SetActive(true);
     }
     public void DisplayLevelText()
