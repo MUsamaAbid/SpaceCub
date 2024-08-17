@@ -19,12 +19,12 @@ public class LevelHandler : MonoBehaviour
 
         if(Galaxy == 0)
         {
-            Debug.Log("Testing: Galaxy 0 unlocked till level " + PlayerPrefs.GetInt(PrefsHandler.unlockedLevelGalaxy1, 0)); ;
+//            Debug.Log("Testing: Galaxy 0 unlocked till level " + PlayerPrefs.GetInt(PrefsHandler.unlockedLevelGalaxy1, 0)); ;
 
             if (PlayerPrefs.GetInt(PrefsHandler.unlockedLevelGalaxy1, 0) < Level + 1)
             {
                 PlayerPrefs.SetInt(PrefsHandler.unlockedLevelGalaxy1, Level + 1);
-                Debug.Log("Testing: adding in Galaxy 1: " + Level + 1);
+       //         Debug.Log("Testing: adding in Galaxy 1: " + Level + 1);
             }
         }
         else if(Galaxy == 1)
@@ -42,7 +42,7 @@ public class LevelHandler : MonoBehaviour
             }
         }
 
-        Debug.Log("Testing: Level: " + Level + "- Galaxy: " + Galaxy);
+//        Debug.Log("Testing: Level: " + Level + "- Galaxy: " + Galaxy);
 
         //PlayerPrefs.SetInt(PrefsHandler.UnlockedGalaxy, Level + 1);
 

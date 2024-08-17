@@ -100,7 +100,7 @@ public class MainMenuManager : MonoBehaviour
 
         LevelsScreen.SetActive(true);
         int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
-        Debug.Log("Testing: Current galaxy is: " + galaxy);
+//        Debug.Log("Testing: Current galaxy is: " + galaxy);
         FindObjectOfType<Levels>().StartLevel(galaxy, level);
 
         MainMenu.SetActive(false);
@@ -108,6 +108,13 @@ public class MainMenuManager : MonoBehaviour
         DisableGalaxy();
         DisableLoadingScreen();
         gameObject.SetActive(false);
+    }
+
+    public void OpenGalaxy(int galaxy)
+    {
+        MainMenu.SetActive(false);
+        Debug.Log("Testing: MMM  galaxy + 1 " + galaxy);
+        GoToGalaxy(galaxy);
     }
     public void GoToGalaxy(int galaxy)
     {

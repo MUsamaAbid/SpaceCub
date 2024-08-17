@@ -111,7 +111,7 @@ public class MMLevelEnabler : MonoBehaviour
     {
         CloseAllLevels();
         //GalaxyGameObject.SetActive(false);
-        Debug.Log("Testing: Level sent: " + level);
+//        Debug.Log("Testing: Level sent: " + level);
         FindObjectOfType<MainMenuManager>().StartLevel(level);
     }
 }

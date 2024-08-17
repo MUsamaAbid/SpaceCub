@@ -15,22 +15,31 @@ public class SceneHandler : MonoBehaviour
 
     [SerializeField] GameObject[] Galaxy3Levels;
 
+    int galaxy;
+
     private void OnEnable()
     {
-        if(PlayerPrefs.GetInt(PrefsHandler.SceneUnlock) == 3)
+        galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy); //0 is for 1
+        Debug.Log("Testing: Current galaxy in Scene Handler: " + galaxy);
+
+        if (PlayerPrefs.GetInt(PrefsHandler.SceneUnlock) == 3)
         {
             StartScreen.SetActive(false);
             MenuScreen.SetActive(false);
             GamePlayScreen.SetActive(true);
 
             int level = PlayerPrefs.GetInt(PrefsHandler.currentLevel) + 1;
-            int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
+            galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy); //0 is for 1
+
             FindObjectOfType<Levels>().StartLevel(galaxy, level);
         }
+        
         else if (PlayerPrefs.GetInt(PrefsHandler.SceneUnlock) == 1)
         {
             StartScreen.SetActive(false);
             MenuScreen.SetActive(true);
+
+            FindObjectOfType<MainMenuManager>().OpenGalaxy(galaxy + 1);
         }
         
         PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 0);
@@ -41,6 +50,7 @@ public class SceneHandler : MonoBehaviour
         PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 3);
         ReloadScene();
     }
+    
     public void LoadLevelSelection()
     {
         PlayerPrefs.SetInt(PrefsHandler.SceneUnlock, 1);
