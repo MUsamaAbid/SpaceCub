@@ -15,22 +15,44 @@ public class EnableLevel : MonoBehaviour
     {
         //EnableCurrentLevel();
     }
-    public void EnableCurrentLevel()
+    public void EnableCurrentLevel(int stars)
     {
         //OpeningAnimation.SetActive(true);
         OpeningAnimation.gameObject.SetActive(true);
         OpeningAnimation.GetComponent<SpriteAnimation>().StartFirstAnimation();
-        Invoke("EnableBorder", 0f);
+
+        //Invoke("EnableBorder", 0f);
+        EnableBorder(stars);
     }
-    void EnableBorder()
+    void EnableBorder(int stars)
     {
         //OpeningAnimation.SetActive(false);
         Border.SetActive(true);
-        EnableStar();
+        EnableStar(stars);
     }
-    void EnableStar()
+    void EnableStar(int stars)
     {
-        FullStar.SetActive(true);
+        OneStar.SetActive(false);
+        TwoStar.SetActive(false);
+        ThreeStar.SetActive(false);
+        FullStar.SetActive(false);
+        if (stars == 0)
+        {
+            //FullStar.SetActive(true);
+        }
+        else if(stars == 2)
+        {
+            OneStar.SetActive(true);
+            TwoStar.SetActive(true);
+        }
+        else if (stars == 1)
+        {
+            OneStar.SetActive(true);
+        }
+        else if (stars == 3)
+        {
+            FullStar.SetActive(true);
+        }
     }
     public void CloseCurrentLevel()
     {

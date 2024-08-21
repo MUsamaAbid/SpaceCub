@@ -71,7 +71,14 @@ public class MMLevelEnabler : MonoBehaviour
 
         for (int i = 0; i <= openLevel - 1; i++)
         {
-            Levels[i].GetComponent<EnableLevel>().EnableCurrentLevel();
+            string starPref = Galaxy.ToString() + i.ToString() + "Stars";
+            int stars = PlayerPrefs.GetInt(starPref, 0);
+
+            Levels[i].GetComponent<EnableLevel>().EnableCurrentLevel(stars);
+
+
+            Debug.Log("---Galaxy:" + Galaxy + "-Level:" + i + "-Stars:" + PlayerPrefs.GetInt(starPref, 0)); //Starts from 1
+
             yield return new WaitForSeconds(0.2f);
         }
         //GalaxyGameObject.SetActive(false);
@@ -83,7 +90,10 @@ public class MMLevelEnabler : MonoBehaviour
             Debug.LogError("Level count doesnt exist");
             return;
         }
-        Levels[levelNumber].GetComponent<EnableLevel>().EnableCurrentLevel();
+        string starPref = Galaxy.ToString() + levelNumber.ToString() + "Stars";
+        int stars = PlayerPrefs.GetInt(starPref, 0);
+
+        Levels[levelNumber].GetComponent<EnableLevel>().EnableCurrentLevel(stars);
         //Levels[levelNumber].
     }
     private void OnDisable()

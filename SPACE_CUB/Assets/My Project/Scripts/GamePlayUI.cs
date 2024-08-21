@@ -413,12 +413,30 @@ public class GamePlayUI : MonoBehaviour
             CongratulationsScreen.GetComponent<Text>().text = "Well              You could do better";
         }
 
+        SaveStars();
+
         //Testing logic
         //Come back here for the stars
         //PlayerPrefs.SetInt(PrefsHandler.stars, 1);
 
         //Debug.Log("stars: " + PlayerPrefs.GetInt(PrefsHandler.stars));
     }
+
+    private static void SaveStars()
+    {
+        Debug.Log("--- Galaxy:" + PlayerPrefs.GetInt(PrefsHandler.currentGalaxy)); // Starts from 0
+        Debug.Log("--- Level:" + PlayerPrefs.GetInt(PrefsHandler.currentLevel)); // Starts from 0
+        Debug.Log("--- Stars:" + PlayerPrefs.GetInt(PrefsHandler.stars)); //Starts from 1
+
+        int galaxy = PlayerPrefs.GetInt(PrefsHandler.currentGalaxy);
+        int level = PlayerPrefs.GetInt(PrefsHandler.currentLevel);
+        int stars = PlayerPrefs.GetInt(PrefsHandler.stars);
+
+        string starPref = galaxy.ToString() + level.ToString() + "Stars";
+
+        PlayerPrefs.SetInt(starPref, stars);
+    }
+
     public void StartTimer()
     {
         if (timerGoing) return;
